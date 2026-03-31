@@ -1,2 +1,2 @@
 # EjemploEdD
-Proyecto de ejemplo (Git-GitHub)
+Proyecto de ejemplo (Git - GitHub)
