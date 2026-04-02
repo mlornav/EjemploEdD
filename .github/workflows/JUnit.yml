@@ -1,18 +1,32 @@
-name: Java CI with JUnit
+name: Java CI - Run All Tests
+
 on:
   push:
     branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      # Checkout
       - uses: actions/checkout@v3
-        with:
-          java-version: '17'
+
+      # Configurar Java 17
       - uses: actions/setup-java@v3
         with:
+          distribution: temurin
           java-version: '17'
-      - run: javac -cp junit-5.9.3.jar src/*.java test/*.java
-      - run: java -jar junit-platform-console-standalone-1.9.3.jar --scan-classpath
+
+      # Compilar todos los archivos de src y test
+      - run: |
+          mkdir -p out
+          javac -cp junit-platform-console-standalone-1.9.3.jar 
+          -d out src/*.java test/*.java
+
+      # Ejecutar todos los tests con JUnit
+      - run: |
+          java -jar junit-platform-console-standalone-1.9.3.jar 
+          --class-path out --scan-classpath
+
