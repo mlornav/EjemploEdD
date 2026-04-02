@@ -27,11 +27,9 @@ jobs:
       - name: Compilar codigo
         run: |
           mkdir -p out
-          javac -cp junit-platform-console-standalone-1.9.3.jar 
-          -d out $(find src test -name "*.java")
+          javac -cp junit-platform-console-standalone-1.9.3.jar -d out $(find src test -name "*.java")
  
       # Ejecutar los tests
       - name: Ejecutar tests
         run: |
-          java -jar junit-platform-console-standalone-1.9.3.jar 
-          --class-path out --scan-classpath
+          java -jar junit-platform-console-standalone-1.9.3.jar --class-path out --scan-classpath
