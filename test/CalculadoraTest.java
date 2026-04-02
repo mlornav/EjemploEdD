@@ -3,17 +3,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculadoraTest {
 
-    // Clase a probar
-    static class Calculadora {
-        public int sumar(int a, int b) {
-            return a + b;
-        }
-
-        public int restar(int a, int b) {
-            return a - b;
-        }
-    }
-
     @Test
     void testSumar() {
         Calculadora calc = new Calculadora();
