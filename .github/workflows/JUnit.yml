@@ -10,26 +10,26 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      # 1. Bajar el código
+      # Clonar Repositorio en el Entorno de Ejecucion
       - uses: actions/checkout@v3
  
-      # 2. Configurar Java 17
+      # Configurar Java 17
       - uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: '17'
 
-      # 3. Descargar JUnit
+      # Descargar JUnit
       - name: Descargar JUnit
         run: wget https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.9.3/junit-platform-console-standalone-1.9.3.jar
  
-      # 4. Compilar TODO (src y test) de forma segura
-      - name: Compilar código
+      # Compilar Archivos Java (src y test)
+      - name: Compilar codigo
         run: |
           mkdir -p out
           javac -cp junit-platform-console-standalone-1.9.3.jar -d out $(find src test -name "*.java")
  
-      # 5. Ejecutar los tests
+      # Ejecutar los tests
       - name: Ejecutar tests
         run: |
           java -jar junit-platform-console-standalone-1.9.3.jar --class-path out --scan-classpath
